@@ -101,18 +101,34 @@ const client = new MongoClient(url);
 // }
 // sortByPrice("abc").catch(console.dir);
 
-//filter fields in all products-filterFields()
-async function filterFields(){
+//sort and filter all products by price-filterSortByPrice()
+// async function filterSortByPrice(){
+//     try{
+//         const database = client.db('shopdb');
+//         const product = database.collection('products')
+//
+//         const query = {}
+//         const option = {projection:{_id:0,name:1,code:1,price:1},sort:{price:1}}
+//         const result = await product.find(query,option);
+//         await result.forEach(console.dir)
+//     } finally {
+//         client.close();
+//     }
+// }
+// filterSortByPrice().catch(console.dir);
+
+//find all products name start with "Laptop"-findAllProductsStartsWithLaptop()
+async function findAllProductsStartsWithLaptop(){
     try{
         const database = client.db('shopdb');
         const product = database.collection('products')
 
-        const query = {}
-        const option = {projection:{_id:0,name:1,code:1,price:1},sort:{price:1}}
+        const query = {name:{$regex:"^aB",$options:'i'}}
+        const option = {projection:{_id:0,name:1,code:1,price:1}}
         const result = await product.find(query,option);
         await result.forEach(console.dir)
     } finally {
         client.close();
     }
 }
-filterFields().catch(console.dir);
+findAllProductsStartsWithLaptop().catch(console.dir);
