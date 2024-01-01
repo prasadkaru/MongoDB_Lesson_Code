@@ -11,11 +11,13 @@ async function insertInventory(){
             [{
             name:'abc',
             price:100.00,
-            rating: ["a","b","c"]
+            rating: ["a","b","c"],
+            promotion:1
         },{
             name: 'pqr',
-                price:400,
-            code: ['java','python',12]
+            code: ['java','python',12],
+            price: 400,
+            promotion: 3
         }
                  ]);
 
@@ -36,11 +38,13 @@ async function insertProducts(){
             code: "001",
             name:'abc',
             price:100.00,
-            rating: [{user:"usr1",rate:4},{user:"usr3",rate:1}]
+            rating: [{user:"usr1",rate:4},{user:"usr3",rate:1}],
+            promotion:1
                      },{
             code:'002',
             name: 'pqr',
-            code: ['java','python',12]
+            code: ['java','python',12],
+            promotion:4
                      }
         ]
 

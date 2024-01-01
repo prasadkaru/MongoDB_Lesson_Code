@@ -184,3 +184,19 @@ const client = new MongoClient(url);
 // filterSortByPriceStartWith("pqr").catch(console.dir);
 
 //find all products by name and promotion - findByNameAndPromo(name,promo)
+async function findByNameAndPromo(name,promo) {
+    try{
+        const database = client.db('shopdb');
+        const product = database.collection('products')
+
+        const query = {$and:[{name:name},{promotion:promo}]}
+        const option = {
+            sort:{price:1}
+            ,projection:{_id:0,name:1,code:1,price:1,promotion:1}}
+        const result = await product.find(query,option);
+        await result.forEach(console.dir)
+    } finally {
+        client.close();
+    }
+}
+findByNameAndPromo('abc',true).catch(console.dir);
