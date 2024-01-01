@@ -14,7 +14,7 @@ async function insertInventory(){
             rating: ["a","b","c"]
         },{
             name: 'pqr',
-                price: 400,
+                price:400,
             code: ['java','python',12]
         }
                  ]);
