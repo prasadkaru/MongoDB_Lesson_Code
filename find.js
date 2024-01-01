@@ -150,17 +150,37 @@ const client = new MongoClient(url);
 // findAllProductsContain('r').catch(console.dir);
 
 //find all products name contain end-findAllProductsEndWith(name)
-async function findAllProductsContain(name){
-    try{
-        const database = client.db('shopdb');
-        const product = database.collection('products')
+// async function findAllProductsContain(name){
+//     try{
+//         const database = client.db('shopdb');
+//         const product = database.collection('products')
+//
+//         const query = {name:new RegExp(name+"$")}
+//         const option = {projection:{_id:0,name:1,code:1,price:1}}
+//         const result = await product.find(query,option);
+//         await result.forEach(console.dir)
+//     } finally {
+//         client.close();
+//     }
+// }
+// findAllProductsContain('c').catch(console.dir);
 
-        const query = {name:new RegExp(name+"$")}
-        const option = {projection:{_id:0,name:1,code:1,price:1}}
-        const result = await product.find(query,option);
-        await result.forEach(console.dir)
-    } finally {
-        client.close();
-    }
-}
-findAllProductsContain('c').catch(console.dir);
+//sort and filter all products by price,stats with -filterSortByPriceStartWith(name)
+// async function filterSortByPriceStartWith(name){
+//     try{
+//         const database = client.db('shopdb');
+//         const product = database.collection('products')
+//
+//         const query = {name:new RegExp("^"+name)}
+//         const option = {
+//             sort:{price:1}
+//             ,projection:{_id:0,name:1,code:1,price:1}}
+//         const result = await product.find(query,option);
+//         await result.forEach(console.dir)
+//     } finally {
+//         client.close();
+//     }
+// }
+// filterSortByPriceStartWith("pqr").catch(console.dir);
+
+//find all products by name and promotion - findByNameAndPromo(name,promo)
