@@ -69,17 +69,34 @@ const client = new MongoClient(url);
 
 
 //find all the products that rated user name-findByRateUser(user)
-async function findByRateUser(user){
+// async function findByRateUser(user){
+//     try{
+//         const database = client.db('shopdb');
+//         const product = database.collection('products')
+//
+//         const query = {"rating.user":user}
+//
+//         const result = await product.find(query);
+//         await result.forEach(console.dir)
+//     } finally {
+//         client.close();
+//     }
+// }
+// findByRateUser("usr3").catch(console.dir);
+
+//sort all products by price-sortByPrice()
+async function sortByPrice(name){
     try{
         const database = client.db('shopdb');
         const product = database.collection('products')
 
-        const query = {"rating.user":user}
+        const query = {name:name}
+        const option = {sort:{price:-1}};
 
-        const result = await product.find(query);
+        const result = await product.find(query,option);
         await result.forEach(console.dir)
     } finally {
         client.close();
     }
 }
-findByRateUser("usr3").catch(console.dir);
+sortByPrice("abc").catch(console.dir);
