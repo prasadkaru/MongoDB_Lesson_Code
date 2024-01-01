@@ -20,7 +20,6 @@ const client = new MongoClient(url);
 
 
 //find the first product - findFirstProducts()
-
 // async function findFirstProducts(){
 //    try{
 //        const database = client.db('shopdb');
@@ -36,12 +35,29 @@ const client = new MongoClient(url);
 
 
 //find all product with name - findByName(name)
-async function findByName(name){
+// async function findByName(name){
+//     try{
+//         const database = client.db('shopdb');
+//         const product = database.collection('products')
+//
+//         const query = {name:name}
+//
+//         const result = await product.find(query);
+//         await result.forEach(console.dir)
+//     } finally {
+//         client.close();
+//     }
+// }
+// findByName("abc").catch(console.dir);
+
+
+//find all the products with qty-findByQty(qty)
+async function findByQty(qty){
     try{
         const database = client.db('shopdb');
         const product = database.collection('products')
 
-        const query = {name:name}
+        const query = {price:qty}
 
         const result = await product.find(query);
         await result.forEach(console.dir)
@@ -49,4 +65,4 @@ async function findByName(name){
         client.close();
     }
 }
-findByName("abc").catch(console.dir);
+findByQty(100).catch(console.dir);
