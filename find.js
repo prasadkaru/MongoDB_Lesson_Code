@@ -133,13 +133,29 @@ const client = new MongoClient(url);
 // }
 // findAllProductsStartsWithLaptop().catch(console.dir);
 
-//find all products name contain-findAllProductsContain(name)
+// //find all products name contain-findAllProductsContain(name)
+// async function findAllProductsContain(name){
+//     try{
+//         const database = client.db('shopdb');
+//         const product = database.collection('products')
+//
+//         const query = {name:new RegExp(name)}
+//         const option = {projection:{_id:0,name:1,code:1,price:1}}
+//         const result = await product.find(query,option);
+//         await result.forEach(console.dir)
+//     } finally {
+//         client.close();
+//     }
+// }
+// findAllProductsContain('r').catch(console.dir);
+
+//find all products name contain end-findAllProductsEndWith(name)
 async function findAllProductsContain(name){
     try{
         const database = client.db('shopdb');
         const product = database.collection('products')
 
-        const query = {name:new RegExp(name)}
+        const query = {name:new RegExp(name+"$")}
         const option = {projection:{_id:0,name:1,code:1,price:1}}
         const result = await product.find(query,option);
         await result.forEach(console.dir)
@@ -147,4 +163,4 @@ async function findAllProductsContain(name){
         client.close();
     }
 }
-findAllProductsContain('r').catch(console.dir);
+findAllProductsContain('c').catch(console.dir);
