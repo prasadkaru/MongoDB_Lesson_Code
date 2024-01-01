@@ -35,7 +35,7 @@ async function insertProducts(){
             code: "001",
             name:'abc',
             price:100.00,
-            rating: ["a","b","c"]
+            rating: [{user:"usr1",rate:4},{user:"usr3",rate:1}]
                      },{
             code:'002',
             name: 'pqr',

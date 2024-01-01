@@ -52,12 +52,29 @@ const client = new MongoClient(url);
 
 
 //find all the products with qty-findByQty(qty)
-async function findByQty(qty){
+// async function findByQty(qty){
+//     try{
+//         const database = client.db('shopdb');
+//         const product = database.collection('products')
+//
+//         const query = {price:qty}
+//
+//         const result = await product.find(query);
+//         await result.forEach(console.dir)
+//     } finally {
+//         client.close();
+//     }
+// }
+// findByQty(100).catch(console.dir);
+
+
+//find all the products that rated user name-findByRateUser(user)
+async function findByRateUser(user){
     try{
         const database = client.db('shopdb');
         const product = database.collection('products')
 
-        const query = {price:qty}
+        const query = {"rating.user":user}
 
         const result = await product.find(query);
         await result.forEach(console.dir)
@@ -65,4 +82,4 @@ async function findByQty(qty){
         client.close();
     }
 }
-findByQty(100).catch(console.dir);
+findByRateUser("usr3").catch(console.dir);
